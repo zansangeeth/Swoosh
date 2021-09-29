@@ -10,8 +10,8 @@ class WelcomeActivity : BaseActivity() {
         setContentView(R.layout.activity_welcome)
 
         get_started_button.setOnClickListener {
-            var intent = Intent(this, LeagueActivity::class.java)
-            startActivity(intent)
+            var leagueIntent = Intent(this, LeagueActivity::class.java)
+            startActivity(leagueIntent)
         }
     }
 }
