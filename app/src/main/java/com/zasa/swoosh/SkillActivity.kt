@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.activity_skill.*
 
-class SkillActivity : AppCompatActivity() {
+class SkillActivity : BaseActivity() {
 
     var selectedSkills = ""
     var league = ""
