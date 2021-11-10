@@ -1,6 +1,7 @@
-package com.zasa.swoosh
+package com.zasa.swoosh.Controller
 import android.content.Intent
 import android.os.Bundle
+import com.zasa.swoosh.R
 import kotlinx.android.synthetic.main.activity_welcome.*
 
 

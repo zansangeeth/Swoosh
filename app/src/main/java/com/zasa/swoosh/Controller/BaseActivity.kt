@@ -1,4 +1,4 @@
-package com.zasa.swoosh
+package com.zasa.swoosh.Controller
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log

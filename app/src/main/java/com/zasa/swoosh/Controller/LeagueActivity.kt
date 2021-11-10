@@ -1,24 +1,39 @@
-package com.zasa.swoosh
+package com.zasa.swoosh.Controller
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.zasa.swoosh.EXTRA_PLAYER
+import com.zasa.swoosh.Model.Player
+import com.zasa.swoosh.R
 import kotlinx.android.synthetic.main.activity_league.*
 
 class LeagueActivity : BaseActivity() {
 
-    var selectedLeague = ""
+    var player  = Player("", "")
 
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelable(EXTRA_PLAYER,player)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_league)
     }
 
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        player = savedInstanceState.getParcelable(EXTRA_PLAYER)!!
+
+    }
+
     fun onMensClicked(view: View){
+
         womensLeagueBtn.isChecked = false
         coedLeagueBtn.isChecked = false
 
-        selectedLeague = "mens"
+        player.league = "mens"
 
     }
 
@@ -27,7 +42,7 @@ class LeagueActivity : BaseActivity() {
         mensLeagueBtn.isChecked = false
         coedLeagueBtn.isChecked = false
 
-        selectedLeague = "womens"
+        player.league = "womens"
     }
 
     fun onCoedClicked(view: View){
@@ -35,17 +50,17 @@ class LeagueActivity : BaseActivity() {
         mensLeagueBtn.isChecked = false
         womensLeagueBtn.isChecked = false
 
-        selectedLeague = "CO-ED"
+        player.league = "CO-ED"
     }
 
     fun leagueNextClicked(view: View){
-        if(selectedLeague != ""){
+        if(player.league != ""){
             val skillActivityIntent = Intent(this, SkillActivity::class.java)
-            skillActivityIntent.putExtra(EXTRA_LEAGUE, selectedLeague)
+            skillActivityIntent.putExtra(EXTRA_PLAYER, player)
             startActivity(skillActivityIntent)
-        }else
+        }else {
             Toast.makeText(this, "please select a league", Toast.LENGTH_SHORT).show()
-
+        }
     }
 
 }
